@@ -1,4 +1,8 @@
-# example.py
-def handle_command(command):
-    response = "You entered: " + command
-    return response
+import logging
+
+import azure.functions as func
+
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    return func.HttpResponse("hello world")
