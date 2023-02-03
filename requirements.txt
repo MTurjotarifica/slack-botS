@@ -4,3 +4,4 @@ slackeventsapi
 pandas
 numpy
 flask
+azure-functions
