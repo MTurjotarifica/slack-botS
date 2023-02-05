@@ -22,6 +22,11 @@ client = WebClient(token=os.environ['SLACK_TOKEN'])
 BOT_ID = client.api_call("auth.test")['user_id'] #gives us the bot id
 signature_verifier = SignatureVerifier(os.environ["SIGNING_SECRET"])
 
+
+@app.route('/')
+def hello():
+    return "Hello, this is my Azure web app!"
+
 @app.route('/slack/interactive-endpoint', methods=['GET','POST'])
 def interactive_trigger():
     print("trigger works")
