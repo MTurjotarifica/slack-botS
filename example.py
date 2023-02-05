@@ -11,6 +11,8 @@ import json
 import urllib
 from flask import Flask, request, Response
 
+import logging
+
 
 app = Flask(__name__)
 slack_event_adapter = SlackEventAdapter(
@@ -35,14 +37,18 @@ def interactive_trigger():
 @app.route('/example', methods=['POST'])
 def hello():
     
-    print("hello works")
+    logging.debug("Received request to /example")
     client.chat_postMessage(channel='#random', 
-                                        text="hello world  ",
-                                        )
+                            text="hello world  ",
+                           )
+    logging.debug("Successfully posted message to Slack")
+
     #returning empty string with 200 response
     return '', 200 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)s %(message)s')
     app.run()
 
 # import logging
