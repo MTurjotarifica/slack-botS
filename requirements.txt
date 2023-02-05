@@ -5,3 +5,4 @@ pandas
 numpy
 flask
 azure-functions
+aiohttp
